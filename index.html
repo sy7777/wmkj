@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>developed</title>
+	<!-- <title>钨钼科技信息发展</title> -->
+	<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect
+		width='32' height='32' rx='6' fill='%231d2126'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle'
+		fill='%23f4f1ea' font-family='sans-serif'%3EW%3C/text%3E%3C/svg%3E">
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js" defer></script>
+</head>
+<body>
+
+	<header>
+		<div class="header-inner">
+			<div class="site-name">钨钼科技信息发展</div>
+			<div class="header-meta">
+				<span>今日日期：<b id="todayDate" class="num"></b></span>
+				<span>今日浏览量：<b id="viewCount" class="num">0</b></span>
+			</div>
+		</div>
+	</header>
+
+	<div class="announce-bar">
+		<div class="announce-inner">
+			<span class="announce-label">实时公告</span>
+			<div class="marquee">
+				<div class="marquee-track" id="marqueeTrack"></div>
+			</div>
+		</div>
+	</div>
+
+	<main>
+		<section id="priceBoard"></section>
+
+		<section class="history-section">
+			<h2>历史报价（最近 7 天）</h2>
+			<div class="hist-tabs" id="histTabs"></div>
+			<div class="table-wrap">
+				<table>
+					<colgroup>
+						<col class="c-date">
+						<col class="c-low">
+						<col class="c-high">
+						<col class="c-diff">
+					</colgroup>
+					<thead>
+						<tr>
+							<th>日期</th>
+							<th>低价</th>
+							<th>高价</th>
+							<th>较上一日</th>
+						</tr>
+					</thead>
+					<tbody id="histBody"></tbody>
+				</table>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<p>© 2026 钨钼科技信息发展 · 报价仅供参考，具体成交以实时询盘为准</p>
+		<span id="secretDot" title=".">.</span>
+		<button id="adminLoginBtn" type="button">登录后台</button>
+	</footer>
+
+	<!-- 登录弹窗 -->
+	<div id="loginModal" class="modal-mask hidden">
+		<div class="modal">
+			<h3>后台登录</h3>
+			<div class="modal-err" id="loginErr"></div>
+			<input type="password" id="pwdInput" placeholder="请输入后台密码" autocomplete="off">
+			<div class="modal-actions">
+				<button class="btn btn-ghost" id="cancelLogin">取消</button>
+				<button class="btn btn-primary" id="confirmLogin">登录</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- 后台面板 -->
+	<div id="adminPanel" class="admin-panel hidden">
+		<div class="admin-inner">
+			<div class="admin-head">
+				<h2>后台管理 · 价格与公告维护</h2>
+				<span class="spacer"></span>
+				<button class="btn btn-ghost" id="exitAdmin">退出后台</button>
+				<button class="btn btn-primary" id="saveAdmin">保存今日报价</button>
+			</div>
+
+			<div class="admin-block">
+				<h3>实时公告内容</h3>
+				<textarea id="annInput" placeholder="输入在公告条滚动展示的内容"></textarea>
+				<p class="admin-tip">保存后公告将在页面顶部向左慢速滚动展示。</p>
+			</div>
+
+			<div class="admin-block">
+				<h3>今日报价（区间价：低价 ~ 高价）</h3>
+				<div class="price-grid" id="priceGrid"></div>
+				<p class="admin-tip">保存后自动与前一日报价对比涨跌；历史记录保留最近 7 天。</p>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<div id="toast"></div>
+</body>
+</html>
